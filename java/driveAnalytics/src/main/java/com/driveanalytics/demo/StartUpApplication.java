@@ -7,10 +7,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan("com.driveanalytics.demo.UserPersonalizationHandler")
 public class StartUpApplication {
 
     @Autowired
@@ -25,6 +23,7 @@ public class StartUpApplication {
         System.out.println("up and running!!!!");
         System.out.println("Contains cabUserData  " + context.containsBeanDefinition("cabUserData"));
         System.out.println("Contains A  " + context.containsBeanDefinition("userData"));
+        System.out.println("Contains A  " + context.containsBeanDefinition("distanceEvaluator"));
 //        System.out.println(userData.getLoggedInUserName());
 //        de.getUserLocation();
     }
