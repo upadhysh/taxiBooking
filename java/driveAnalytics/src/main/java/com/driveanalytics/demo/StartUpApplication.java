@@ -6,10 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
-public class StartUpApplication {
+public class StartUpApplication extends SpringBootServletInitializer {
+//public class StartUpApplication{
 
     @Autowired
     @Qualifier(value = "cabUserData")
@@ -28,4 +31,13 @@ public class StartUpApplication {
 //        de.getUserLocation();
     }
 
+    /**
+     * Returns SpringApplicationBuilder configuration ot initialize servlet context required by external tomcat
+     * @param application
+     * @return
+     */
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application){
+        return  application.sources(StartUpApplication.class);
+    }
 }

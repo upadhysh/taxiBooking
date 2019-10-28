@@ -1,0 +1,41 @@
+<!-- Ant configuration -->
+
+<project default = "deploy" basedir="." name="da_api">
+
+    <property file = "build.properties" />
+
+    <property name = "catalinaBaseDir" value = "${catalina.home}" />
+    <property name = "projectHome" value = "${project.home}" />
+    <property name = "mavenHome" value="${mvn.home}" />
+
+    <target name="stop">
+        <exec executable="${catalinaBaseDir}/bin/shutdown.sh"/>
+        <echo message=" Server Stopped "/>
+    </target>
+
+    <target name="clean">
+        <delete dir="build"/>
+        <echo message=" Server Stopped "/>
+    </target>
+
+    <target name ="build">
+        <echo message=" Server compiling "/>
+        <exec executable = "${mavenHome}/mvn">
+            <arg line="package" />
+<!--            <arg line = "compile war:war" />-->
+        </exec>
+        <echo message=" Server compiled "/>
+    </target>
+
+    <target name = "copy">
+        <echo message=" Copying over config "/>
+        <copy file="target/da_api.war"  tofile="${catalinaBaseDir}/webapps/da_api.war" overwrite="yes" />
+    </target>
+
+    <target name="deploy" depends="stop,build,copy">
+        <echo message=" Server starting "/>
+        <exec executable="${catalinaBaseDir}/bin/startup.sh" />
+        <echo message=" Server up "/>
+    </target>
+
+</project>

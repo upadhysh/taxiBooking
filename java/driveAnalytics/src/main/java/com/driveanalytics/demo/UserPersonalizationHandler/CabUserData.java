@@ -4,14 +4,18 @@ package com.driveanalytics.demo.UserPersonalizationHandler;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Repository
-@RequestMapping("/api/userInfo")
+@RestController
+@CrossOrigin
+@RequestMapping("/userInfo")
 public class CabUserData implements UserData {
 
     @Override

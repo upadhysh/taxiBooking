@@ -16,7 +16,7 @@ import java.util.*;
 import java.util.LinkedList;
 
 @Service
-@RequestMapping("/api/cabInfo")
+@RequestMapping("/cabInfo")
 public class DistanceEvaluator {
 
     @Autowired
